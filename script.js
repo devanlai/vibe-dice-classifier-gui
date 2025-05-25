@@ -4,6 +4,7 @@ class DiceClassifier {
         this.currentImage = null;
         this.uncategorizedImages = [];
         this.lastAction = null;
+        this.selectedDieType = null;
         this.initializeElements();
         this.attachEventListeners();
     }
@@ -14,15 +15,37 @@ class DiceClassifier {
         this.currentImageElement = document.getElementById('currentImage');
         this.undoButton = document.getElementById('undoButton');
         this.remainingCountElement = document.getElementById('remainingCount');
-        this.diceButtons = document.querySelectorAll('.dice-btn');
+        this.dieTypeButtons = document.querySelectorAll('.die-type-btn');
+        this.classificationOptions = document.querySelector('.classification-options');
+        this.numberButtonsContainer = document.querySelector('.number-buttons');
+        this.invalidButton = document.querySelector('.invalid-btn');
     }
 
     attachEventListeners() {
         this.selectDirectoryBtn.addEventListener('click', () => this.selectDirectory());
         this.undoButton.addEventListener('click', () => this.undoLastAction());
-        this.diceButtons.forEach(button => {
-            button.addEventListener('click', (e) => this.classifyImage(e.target.dataset.value));
+        this.dieTypeButtons.forEach(button => {
+            button.addEventListener('click', (e) => this.selectDieType(e.target.dataset.sides));
         });
+        this.invalidButton.addEventListener('click', () => this.classifyImage('invalid'));
+    }
+
+    selectDieType(sides) {
+        this.selectedDieType = parseInt(sides);
+        this.generateNumberButtons();
+        this.classificationOptions.style.display = 'block';
+        this.showNextImage();
+    }
+
+    generateNumberButtons() {
+        this.numberButtonsContainer.innerHTML = '';
+        for (let i = 1; i <= this.selectedDieType; i++) {
+            const button = document.createElement('button');
+            button.className = 'number-btn';
+            button.textContent = i;
+            button.addEventListener('click', () => this.classifyImage(i.toString()));
+            this.numberButtonsContainer.appendChild(button);
+        }
     }
 
     async selectDirectory() {

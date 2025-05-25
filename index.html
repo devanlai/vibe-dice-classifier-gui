@@ -15,6 +15,18 @@
             <span id="selectedDirectory">No directory selected</span>
         </div>
 
+        <div class="die-type-selector">
+            <h2>Select the type of die:</h2>
+            <div class="die-type-buttons">
+                <button class="die-type-btn" data-sides="4">d4</button>
+                <button class="die-type-btn" data-sides="6">d6</button>
+                <button class="die-type-btn" data-sides="8">d8</button>
+                <button class="die-type-btn" data-sides="10">d10</button>
+                <button class="die-type-btn" data-sides="12">d12</button>
+                <button class="die-type-btn" data-sides="20">d20</button>
+            </div>
+        </div>
+
         <div class="image-viewer">
             <img id="currentImage" src="" alt="Current dice image">
             <div class="image-controls">
@@ -22,17 +34,12 @@
             </div>
         </div>
 
-        <div class="classification-options">
+        <div class="classification-options" style="display: none;">
             <h2>Select the number on the die:</h2>
-            <div class="dice-buttons">
-                <button class="dice-btn" data-value="4">4-sided</button>
-                <button class="dice-btn" data-value="6">6-sided</button>
-                <button class="dice-btn" data-value="8">8-sided</button>
-                <button class="dice-btn" data-value="10">10-sided</button>
-                <button class="dice-btn" data-value="12">12-sided</button>
-                <button class="dice-btn" data-value="20">20-sided</button>
-                <button class="dice-btn invalid" data-value="invalid">Invalid</button>
+            <div class="number-buttons">
+                <!-- Number buttons will be dynamically generated -->
             </div>
+            <button class="invalid-btn">Invalid</button>
         </div>
 
         <div class="status">
