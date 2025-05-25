@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Image Classifier</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dice Image Classifier</h1>
+        
+        <div class="directory-selector">
+            <button id="selectDirectory">Select Directory</button>
+            <span id="selectedDirectory">No directory selected</span>
+        </div>
+
+        <div class="image-viewer">
+            <img id="currentImage" src="" alt="Current dice image">
+            <div class="image-controls">
+                <button id="undoButton" disabled>Undo Last Classification</button>
+            </div>
+        </div>
+
+        <div class="classification-options">
+            <h2>Select the number on the die:</h2>
+            <div class="dice-buttons">
+                <button class="dice-btn" data-value="4">4-sided</button>
+                <button class="dice-btn" data-value="6">6-sided</button>
+                <button class="dice-btn" data-value="8">8-sided</button>
+                <button class="dice-btn" data-value="10">10-sided</button>
+                <button class="dice-btn" data-value="12">12-sided</button>
+                <button class="dice-btn" data-value="20">20-sided</button>
+                <button class="dice-btn invalid" data-value="invalid">Invalid</button>
+            </div>
+        </div>
+
+        <div class="status">
+            <p>Images remaining: <span id="remainingCount">0</span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
