@@ -125,7 +125,7 @@ class DiceClassifier {
         if (!this.lastAction) return;
 
         try {
-            // Move the file back to original directory
+            // Move the file back to original directory first
             const originalFileHandle = await this.lastAction.originalDirectory.getFileHandle(
                 this.lastAction.file.name,
                 { create: true }
@@ -134,6 +134,14 @@ class DiceClassifier {
             const file = await this.lastAction.file.getFile();
             await writable.write(await file.arrayBuffer());
             await writable.close();
+
+            // Now delete the file from the classification directory
+            const classificationDir = await this.getOrCreateDirectory(this.lastAction.classification);
+            try {
+                await classificationDir.removeEntry(this.lastAction.file.name);
+            } catch (error) {
+                console.error('Error deleting file from classification directory:', error);
+            }
 
             // Add back to uncategorized images
             this.uncategorizedImages.unshift(this.lastAction.file);
