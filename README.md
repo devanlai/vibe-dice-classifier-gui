@@ -1,5 +1,7 @@
 # Dice Image Classifier
 
+This is an experiment in AI vibe coding using Cursor. Everything below this point is generated.
+
 A static web application for classifying images of dice. This application allows users to select a local directory containing images and classify them based on the number shown on the die.
 
 ## Features
